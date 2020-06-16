@@ -1,8 +1,8 @@
 {
   "name": "express-typescipt-knex-boilerplate",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple boiler plate using the above mentioned tecs",
+  "main": "server.ts",
   "scripts": {
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
@@ -10,8 +10,8 @@
     "knex:seed": "knex --knexfile knexfile.ts seed:run"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "vinibiso",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "celebrate": "^12.1.1",
