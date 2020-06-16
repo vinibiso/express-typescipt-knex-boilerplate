@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "knex:new_seed": "knex --knexfile knexfile.ts seed:make new_seed",
     "knex:seed": "knex --knexfile knexfile.ts seed:run"
   },
   "keywords": [],
