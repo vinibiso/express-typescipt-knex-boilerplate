@@ -1,7 +1,8 @@
 # express-typescipt-knex-boilerplate
 
 This is a boilerplate made thinking that you're going to build a REST api.
-It's based on knowlage acquired durign Rockseat's Next Level Web and influenced by my time using Django.
+
+It's based on knowlage acquired during Rockseat's Next Level Web and influenced by my time using Django.
 
 ## Installation
 
@@ -41,3 +42,5 @@ Aside from that the project also includes the following packages:
 - Pre-configured static file serving
 
 ## Folder Structure
+
+## Disclaimer
