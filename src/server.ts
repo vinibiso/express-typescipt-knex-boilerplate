@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(jwt(authConfig).unless({ path: ['/authenticate', '/register'] }));
 app.use(routes);
 
-app.use('/assets', express.static(path.resolve(__dirname, '..', 'assets')));
+app.use('/static', express.static(path.resolve(__dirname, '..', 'static')));
 
 app.use(errors());
 
