@@ -6,15 +6,18 @@ import { errors } from 'celebrate';
 import routes from './routes';
 // Local
 import authConfig from './config/auth.json';
+import { STATIC_BASE } from './config/settings';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(jwt(authConfig).unless({ path: ['/authenticate', '/register'] }));
-app.use(routes);
+// Serve static files
+app.use(STATIC_BASE, express.static(path.resolve(__dirname, '..', 'static')));
+// Exclude paths that can be open
+app.use(jwt(authConfig).unless({ path: ['/authenticate', '/register', '/static'] }));
 
-app.use('/static', express.static(path.resolve(__dirname, '..', 'static')));
+app.use(routes);
 
 app.use(errors());
 

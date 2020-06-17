@@ -4,10 +4,23 @@ import bcrypt from 'bcrypt';
 import knex from '../database/connection';
 import generateWebToken from '../utils/gerenerateWebToken';
 
+import { STATIC_URL } from '../config/settings';
+
 class UsersController {
   async index(request: Request, response: Response) {
-    // TODO: User listing without password hash only if admin
-    return response.json({ message: null });
+    const users = await knex('users').select('*');
+
+    const serializedUsers = users.map((user) => {
+      delete user.password;
+
+      return {
+        ...user,
+        admin: user.admin === 1,
+        avatar_url: user.avatar ? `${STATIC_URL}${user.avatar}` : null,
+      };
+    });
+
+    return response.json(serializedUsers);
   }
 
   async show(request: Request, response: Response) {
