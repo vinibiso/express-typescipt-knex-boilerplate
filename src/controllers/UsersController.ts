@@ -48,7 +48,7 @@ class UsersController {
       email,
       password: hashedPassword,
       admin: false,
-      avatar: request.file.filename,
+      avatar: request.file ? request.file.filename : null,
     };
 
     const insertedIds = await knex('users').insert(user);
@@ -56,10 +56,11 @@ class UsersController {
 
     const newUser = {
       id: userId,
-      emaail: user.email,
+      email: user.email,
+      admin: false,
     };
 
-    const token = generateWebToken({ id: newUser.id });
+    const token = generateWebToken(newUser);
 
     return response.json({ user: newUser, token });
   }
@@ -77,7 +78,9 @@ class UsersController {
       return response.status(400).json({ message: 'Invalid password' });
     }
 
-    const token = generateWebToken({ id: user.id });
+    delete user.password;
+
+    const token = generateWebToken(user);
 
     return response.json({ token });
   }

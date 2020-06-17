@@ -142,7 +142,9 @@ $RECYCLE.BIN/
 *.lnk
 
 *.sqlite
-uploads/*
+static/uploads/*
 !uploads/.gitkeep
+!static/.gitkeep
+!assets/.gitkeep
 
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,windows
