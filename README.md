@@ -37,6 +37,7 @@ Aside from that the project also includes the following packages:
 - Preconfigured esling for typescript and express using the airbnb styleguide
 - Basic user model with admin
 - Basic REST CRUD for the user model
+- 2 Auth midllewares (isAdmin and IsUserOrAdmin)
 - Image upload example (User Avatar) - Pre-configured Multer
 - Pre-configured JWT Authentication
 - Pre-configured static file serving
@@ -44,3 +45,6 @@ Aside from that the project also includes the following packages:
 ## Folder Structure
 
 ## Disclaimer
+
+I'm not saying this is the best way to do things or that ever that it's all right.
+Have any tips? Questions? Please open an Issue!
