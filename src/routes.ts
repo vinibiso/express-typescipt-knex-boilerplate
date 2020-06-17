@@ -8,6 +8,7 @@ import multerConfig from './config/multer';
 import UsersController from './controllers/UsersController';
 // Middlewares
 import isAdmin from './middlewares/isAdmin';
+import isUserOrAdmin from './middlewares/isUserOrAdmin';
 
 const routes = express.Router();
 const upload = multer(multerConfig);
@@ -17,9 +18,9 @@ const usersController = new UsersController();
 
 // Auth
 routes.get('/users', isAdmin, usersController.index);
-// routes.get('/users/:id', usersController.show);
+routes.get('/users/:id', isUserOrAdmin, usersController.show);
 // routes.put('/users/:id', usersController.update);
-// routes.delete('/users/:id', usersController.delete);
+routes.delete('/users/:id', isAdmin, usersController.delete);
 routes.post(
   '/register',
   upload.single('avatar'),

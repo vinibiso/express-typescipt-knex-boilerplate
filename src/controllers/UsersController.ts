@@ -26,15 +26,32 @@ class UsersController {
   async show(request: Request, response: Response) {
     const { id } = request.params;
 
-    // TODO: Get info of one user without password hash only if admin or user
-    return response.json({ message: null });
+    const user = await knex('users').where('id', id).first();
+
+    delete user.password;
+
+    return response.json({
+      ...user,
+      avatar_url: user.avatar ? `${STATIC_URL}${user.avatar}` : null,
+    });
   }
 
   async delete(request: Request, response: Response) {
     const { id } = request.params;
 
-    // TODO: Delete user only if request is admin
-    return response.json({ message: null });
+    // User cannot delete itself
+    if (request.user.id === Number(id)) {
+      return response.status(403).json({ message: 'User cannot delete itself' });
+    }
+
+    const deletedUser = await knex('users').where('id', id).del();
+
+    // User to delete was not found
+    if (!deletedUser) {
+      return response.status(400).json({ message: 'User not found' });
+    }
+
+    return response.json({ message: 'User deleted', id });
   }
 
   async update(request: Request, response: Response) {
@@ -56,7 +73,6 @@ class UsersController {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // TODO: Test this
     const user = {
       email,
       password: hashedPassword,
