@@ -3,9 +3,9 @@ import cors from 'cors';
 import path from 'path';
 import jwt from 'express-jwt';
 import { errors } from 'celebrate';
-import routes from './routes';
 // Local
-import { STATIC_BASE, JWT_CONFIG } from './config/settings';
+import { STATIC_BASE, JWT_CONFIG } from '@config/settings';
+import routes from './routes';
 
 const app = express();
 

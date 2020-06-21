@@ -4,7 +4,8 @@
   "description": "A simple boiler plate using the above mentioned tecs",
   "main": "server.ts",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
+    "build": "tsc",
     "knex:migrate": "knex --knexfile ./src/config/knexfile.js migrate:latest",
     "knex:seed": "knex --knexfile ./src/config/knexfile.ts seed:run"
   },
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.1",
     "multer": "^1.4.2",
+    "path": "^0.12.7",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
@@ -36,9 +38,9 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.21.1",
-    "path": "^0.12.7",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.3"
   }
 }
