@@ -6,10 +6,15 @@ const STATIC_URL = `${BASE_URL}${STATIC_BASE}/`;
 const JWT_SECRET = '6ce200bf4bc7b8240352131bbcf0859b';
 const JWT_EXPIRES_IN = 86400; // Default to 24hours in seconds
 
+const JWT_CONFIG = {
+  secret: JWT_SECRET,
+};
+
 export {
   BASE_URL,
   STATIC_BASE,
   STATIC_URL,
   JWT_SECRET,
   JWT_EXPIRES_IN,
+  JWT_CONFIG,
 };

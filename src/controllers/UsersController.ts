@@ -86,7 +86,7 @@ class UsersController {
     const newUser = {
       id: userId,
       email: user.email,
-      admin: false,
+      admin: 0,
     };
 
     const token = generateWebToken(newUser);
